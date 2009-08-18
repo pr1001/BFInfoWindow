@@ -10,7 +10,6 @@
  */
 function BFInfoWindow(options) {
   google.maps.OverlayView.call(this);
-  this.setOptions(options);
   this.offsetVertical_ = -195;
   this.offsetHorizontal_ = 0;
   this.height_ = 165;
@@ -21,8 +20,8 @@ function BFInfoWindow(options) {
   // draw.
   this.set_map(this.map_);
   
-  // a default value
-  // this.set_zIndex(0);
+  // MVCObject's set methods give errors if not called after set_map here
+  this.setOptions(options);
 }
 
 /* BFInfoWindow extends OverlayView class from the Google Maps v3 API
