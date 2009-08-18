@@ -153,6 +153,7 @@ BFInfoWindow.prototype.createElement = function() {
     div.style.height = this.height_ + "px";
     div.style.zIndex = this.get_zIndex();
     var contentDiv = document.createElement("div");
+    contentDiv.id = "BFInfoWindow_content"
     contentDiv.style.padding = "30px"
     contentDiv.innerHTML = this.get_content();
 
@@ -176,8 +177,12 @@ BFInfoWindow.prototype.createElement = function() {
     // The panes have changed.  Move the div.
     div.parentNode.removeChild(div);
     panes.floatPane.appendChild(div);
+    // Update the div's content
+    document.getElementById("BFInfoWindow_content").innerHTML = this.get_content();
   } else {
     // The panes have not changed, so no need to create or move the div.
+    // Update the div's content
+    document.getElementById("BFInfoWindow_content").innerHTML = this.get_content();
   }
 };
 
