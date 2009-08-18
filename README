@@ -1,0 +1,32 @@
+BFInfoWindow is based upon Google sample code for Maps API v3 that can be found here: http://gmaps-samples-v3.googlecode.com/svn/trunk/infowindow_custom/infowindow-custom.html
+
+Unlike the sample code, BFInfoWindow can be used (eventually) exactly like the API's native InfoWindow class. This means you can use one BFInfoWindow for many markers like so:
+  var myOptions = {
+    zoom: 8,
+    center: new google.maps.LatLng(-33.397, 150.644),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    sensor: 'true'
+  }
+  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  infoBox = new BFInfoWindow();
+  i = 1;
+
+  var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(-34, 150),
+      map: map
+  });
+  google.maps.event.addListener(marker, "click", function(e) {
+    infoBox.set_content("Hello, you! This is click #" + i);
+    infoBox.open(map, marker);
+    i++;
+  });
+  
+  var marker2 = new google.maps.Marker({
+      position: new google.maps.LatLng(-35, 151),
+      map: map
+  });
+  google.maps.event.addListener(marker2, "click", function(e) {
+    infoBox.set_content(i + " is the loneliest number");
+    infoBox.open(map, marker2);
+    i++;
+  });
